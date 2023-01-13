@@ -8,14 +8,22 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.Extensions.Options;
 using MyNotes.WebApi;
-using System.ComponentModel;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using MyNotes.WebApi.Services;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .WriteTo.File("MyNotesLog-.txt", rollingInterval:
+        RollingInterval.Day)
+    .CreateLogger();
+
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
+
+builder.Host.UseSerilog();
 
 using (var scope = builder.Services.BuildServiceProvider().CreateScope()) // invoke method of Db initialization
 {
@@ -27,7 +35,7 @@ using (var scope = builder.Services.BuildServiceProvider().CreateScope()) // inv
     }
     catch (Exception exception)
     {
-
+        Log.Fatal(exception, "An error occured while app initialization");
     }
 }
 
@@ -71,7 +79,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApiVersioning();
 
+builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 app.UseSwagger();
 app.UseSwaggerUI(config =>
