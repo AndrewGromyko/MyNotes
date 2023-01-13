@@ -5,6 +5,12 @@ using MyNotes.Application.Interfaces;
 using System.Reflection;
 using MyNotes.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.Extensions.Options;
+using MyNotes.WebApi;
+using System.ComponentModel;
+using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,12 +62,14 @@ builder.Services.AddAuthentication(config =>
         options.RequireHttpsMetadata = false;
     });
 
-builder.Services.AddSwaggerGen(config =>
-{
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    config.IncludeXmlComments(xmlPath);
-});
+builder.Services.AddVersionedApiExplorer(options =>
+    options.GroupNameFormat = "'v'VVV");
+
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>,
+    ConfigureSwaggerOptions>();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddApiVersioning();
 
 var app = builder.Build();
 
@@ -78,6 +86,8 @@ app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseApiVersioning();
 
 app.MapControllers();
 
