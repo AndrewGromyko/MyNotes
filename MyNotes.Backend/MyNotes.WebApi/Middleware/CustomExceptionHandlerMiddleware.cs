@@ -9,10 +9,12 @@ namespace MyNotes.WebApi.Middleware
     {
         private readonly RequestDelegate _next;
 
-        public CustomExceptionHandlerMiddleware(RequestDelegate next) =>
+        public CustomExceptionHandlerMiddleware(RequestDelegate next)
+        {
             _next = next;
+        }
 
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             try
             {

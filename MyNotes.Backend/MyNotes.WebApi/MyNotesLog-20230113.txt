@@ -32,3 +32,77 @@ SELECT 1 ELSE SELECT 0
 2023-01-13 11:15:52.961 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - -
 2023-01-13 11:15:53.102 +01:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 140.2776 ms
 2023-01-13 11:15:53.103 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 141.7838ms
+2023-01-13 11:55:02.742 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-01-13 11:55:02.900 +01:00 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2023-01-13 11:55:03.513 +01:00 [INF] User profile is available. Using 'C:\Users\Andrew\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-13 11:55:03.795 +01:00 [INF] Now listening on: https://localhost:7032
+2023-01-13 11:55:03.795 +01:00 [INF] Now listening on: http://localhost:5153
+2023-01-13 11:55:03.817 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-13 11:55:03.817 +01:00 [INF] Hosting environment: Development
+2023-01-13 11:55:03.818 +01:00 [INF] Content root path: C:\Users\Andrew\source\repos\MyNotes\MyNotes.Backend\MyNotes.WebApi
+2023-01-13 11:55:04.788 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/index.html - -
+2023-01-13 11:55:05.453 +01:00 [INF] HTTP GET /index.html responded 200 in 611.4715 ms
+2023-01-13 11:55:05.536 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/index.html - - - 200 - text/html;charset=utf-8 751.2446ms
+2023-01-13 11:55:05.573 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/_framework/aspnetcore-browser-refresh.js - -
+2023-01-13 11:55:05.588 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 14.9885ms
+2023-01-13 11:55:05.605 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/_vs/browserLink - -
+2023-01-13 11:55:05.942 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 336.0513ms
+2023-01-13 11:55:06.187 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - -
+2023-01-13 11:55:06.464 +01:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 276.2884 ms
+2023-01-13 11:55:06.465 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 278.0472ms
+2023-01-13 11:55:33.337 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/api/Note?api-version=1 - -
+2023-01-13 11:55:35.083 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-01-13 11:55:35.102 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-01-13 11:55:35.103 +01:00 [INF] HTTP GET /api/Note responded 401 in 1764.4274 ms
+2023-01-13 11:55:35.104 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/api/Note?api-version=1 - - - 401 0 - 1766.8017ms
+2023-01-13 12:16:32.553 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-01-13 12:16:32.604 +01:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2023-01-13 12:16:32.840 +01:00 [INF] User profile is available. Using 'C:\Users\Andrew\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-13 12:16:32.961 +01:00 [INF] Now listening on: https://localhost:7032
+2023-01-13 12:16:32.961 +01:00 [INF] Now listening on: http://localhost:5153
+2023-01-13 12:16:32.962 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-13 12:16:32.962 +01:00 [INF] Hosting environment: Development
+2023-01-13 12:16:32.962 +01:00 [INF] Content root path: C:\Users\Andrew\source\repos\MyNotes\MyNotes.Backend\MyNotes.WebApi
+2023-01-13 12:16:34.509 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/index.html - -
+2023-01-13 12:16:34.822 +01:00 [INF] HTTP GET /index.html responded 200 in 286.4085 ms
+2023-01-13 12:16:34.852 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/index.html - - - 200 - text/html;charset=utf-8 346.8062ms
+2023-01-13 12:16:34.878 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/_framework/aspnetcore-browser-refresh.js - -
+2023-01-13 12:16:34.883 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 5.3844ms
+2023-01-13 12:16:34.889 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/_vs/browserLink - -
+2023-01-13 12:16:34.928 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.8284ms
+2023-01-13 12:16:35.002 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - -
+2023-01-13 12:16:35.141 +01:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 138.1540 ms
+2023-01-13 12:16:35.141 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 139.5256ms

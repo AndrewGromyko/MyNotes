@@ -1,0 +1,50 @@
+2023-01-23 16:53:53.434 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-01-23 16:53:53.614 +01:00 [INF] Executed DbCommand (101ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2023-01-23 16:53:55.259 +01:00 [INF] User profile is available. Using 'C:\Users\Andrew\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-01-23 16:53:55.796 +01:00 [INF] Now listening on: https://localhost:7032
+2023-01-23 16:53:55.796 +01:00 [INF] Now listening on: http://localhost:5153
+2023-01-23 16:53:55.800 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-01-23 16:53:55.801 +01:00 [INF] Hosting environment: Development
+2023-01-23 16:53:55.801 +01:00 [INF] Content root path: C:\Users\Andrew\source\repos\MyNotes\MyNotes.Backend\MyNotes.WebApi
+2023-01-23 16:53:57.148 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/index.html - -
+2023-01-23 16:53:57.816 +01:00 [INF] HTTP GET /index.html responded 200 in 619.2120 ms
+2023-01-23 16:53:57.899 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/index.html - - - 200 - text/html;charset=utf-8 754.2274ms
+2023-01-23 16:53:57.947 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/_framework/aspnetcore-browser-refresh.js - -
+2023-01-23 16:53:57.947 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/swagger-ui.css - -
+2023-01-23 16:53:57.949 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/swagger-ui-standalone-preset.js - -
+2023-01-23 16:53:57.949 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/swagger-ui-bundle.js - -
+2023-01-23 16:53:57.986 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 39.2541ms
+2023-01-23 16:53:57.988 +01:00 [INF] The file /swagger-ui-bundle.js was not modified
+2023-01-23 16:53:57.988 +01:00 [INF] The file /swagger-ui.css was not modified
+2023-01-23 16:53:57.988 +01:00 [INF] The file /swagger-ui-standalone-preset.js was not modified
+2023-01-23 16:53:57.989 +01:00 [INF] HTTP GET /swagger-ui-bundle.js responded 304 in 31.2698 ms
+2023-01-23 16:53:57.989 +01:00 [INF] HTTP GET /swagger-ui.css responded 304 in 33.5498 ms
+2023-01-23 16:53:57.989 +01:00 [INF] HTTP GET /swagger-ui-standalone-preset.js responded 304 in 31.4388 ms
+2023-01-23 16:53:57.990 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/swagger-ui.css - - - 304 - text/css 42.9103ms
+2023-01-23 16:53:57.990 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/swagger-ui-standalone-preset.js - - - 304 - text/javascript 42.8058ms
+2023-01-23 16:53:57.990 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/swagger-ui-bundle.js - - - 304 - text/javascript 42.9088ms
+2023-01-23 16:53:58.009 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/_vs/browserLink - -
+2023-01-23 16:53:58.195 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 186.4869ms
+2023-01-23 16:53:58.721 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - -
+2023-01-23 16:53:58.805 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7032/favicon-32x32.png - -
+2023-01-23 16:53:58.817 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-01-23 16:53:58.817 +01:00 [INF] HTTP GET /favicon-32x32.png responded 200 in 11.1222 ms
+2023-01-23 16:53:58.817 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/favicon-32x32.png - - - 200 628 image/png 11.8738ms
+2023-01-23 16:53:58.994 +01:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 273.1566 ms
+2023-01-23 16:53:58.995 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7032/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 274.0945ms

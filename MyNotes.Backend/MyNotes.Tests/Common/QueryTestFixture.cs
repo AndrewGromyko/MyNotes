@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MyNotes.Application.Common.Mappings;
-using MyNotes.Application.Interfaces;
+using MyNotes.Domain.Interfaces;
 using MyNotes.Persistence;
 
 namespace MyNotes.Tests.Common
@@ -16,7 +16,7 @@ namespace MyNotes.Tests.Common
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new AssemblyMappingProfile(
-                    typeof(INotesDbContext).Assembly));
+                    typeof(NotesDbContext).Assembly));
             });
             Mapper = configurationProvider.CreateMapper();
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyNotes.Domain;
+using MyNotes.Domain.Interfaces;
+using MyNotes.Domain.Models;
 using MyNotes.Persistence;
 
 namespace MyNotes.Tests.Common

@@ -1,4 +1,4 @@
-﻿namespace MyNotes.Domain
+﻿namespace MyNotes.Domain.Models
 {
     public class Note
     {

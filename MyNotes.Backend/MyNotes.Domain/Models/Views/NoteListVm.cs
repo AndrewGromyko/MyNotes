@@ -1,4 +1,4 @@
-﻿namespace MyNotes.Application.Notes.Queries.GetNoteList
+﻿namespace MyNotes.Domain.Models.Views
 {
     public class NoteListVm
     {

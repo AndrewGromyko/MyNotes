@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyNotes.Application.Interfaces;
+using MyNotes.Domain.Interfaces;
 
 namespace MyNotes.Persistence
 {
@@ -17,8 +17,8 @@ namespace MyNotes.Persistence
                 options.UseSqlServer(connectionString);
             });
 
-            services.AddScoped<INotesDbContext>(provider =>
-                provider.GetService<NotesDbContext>());
+            services.AddScoped(provider =>
+                (INotesDbContext)provider.GetService<NotesDbContext>());
 
             return services;
         }

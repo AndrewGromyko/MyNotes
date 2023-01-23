@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using MyNotes.Domain.Models.Commands;
 
 namespace MyNotes.Application.Notes.Commands.CreateNote
 {

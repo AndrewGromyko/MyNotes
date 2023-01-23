@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyNotes.Domain;
+using MyNotes.Domain.Models;
 
-namespace MyNotes.Application.Interfaces
+namespace MyNotes.Domain.Interfaces
 {
     public interface INotesDbContext
     {

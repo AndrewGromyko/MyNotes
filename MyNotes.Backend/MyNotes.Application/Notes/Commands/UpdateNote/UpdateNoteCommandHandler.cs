@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MyNotes.Application.Common.Exceptions;
-using MyNotes.Application.Interfaces;
-using MyNotes.Domain;
+using MyNotes.Domain.Interfaces;
+using MyNotes.Domain.Models;
+using MyNotes.Domain.Models.Commands;
 
 namespace MyNotes.Application.Notes.Commands.UpdateNote
 {
@@ -11,8 +12,10 @@ namespace MyNotes.Application.Notes.Commands.UpdateNote
     {
         private readonly INotesDbContext _dbContext;
 
-        public UpdateNoteCommandHandler(INotesDbContext dbContext) =>
+        public UpdateNoteCommandHandler(INotesDbContext dbContext)
+        {
             _dbContext = dbContext;
+        }
 
         public async Task<Unit> Handle(UpdateNoteCommand request,
             CancellationToken cancellationToken)

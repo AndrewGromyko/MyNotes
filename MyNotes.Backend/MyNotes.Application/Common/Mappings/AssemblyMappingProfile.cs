@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MyNotes.Domain.Interfaces.Services;
 using System.Reflection;
 
 namespace MyNotes.Application.Common.Mappings

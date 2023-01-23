@@ -1,7 +1,6 @@
 using MyNotes.Persistence;
 using MyNotes.Application;
 using MyNotes.Application.Common.Mappings;
-using MyNotes.Application.Interfaces;
 using System.Reflection;
 using MyNotes.WebApi.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,6 +10,8 @@ using MyNotes.WebApi;
 using MyNotes.WebApi.Services;
 using Serilog;
 using Serilog.Events;
+using MyNotes.Domain.Interfaces.Services;
+using MyNotes.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,12 +64,12 @@ builder.Services.AddAuthentication(config =>
         JwtBearerDefaults.AuthenticationScheme;
     config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-    .AddJwtBearer("Bearer", options =>
-    {
-        options.Authority = "https://localhost:44397";
-        options.Audience = "MyNotesWebAPI";
-        options.RequireHttpsMetadata = false;
-    });
+.AddJwtBearer("Bearer", options =>
+{
+    options.Authority = "https://localhost:44397";
+    options.Audience = "MyNotesWebAPI";
+    options.RequireHttpsMetadata = false;
+});
 
 builder.Services.AddVersionedApiExplorer(options =>
     options.GroupNameFormat = "'v'VVV");

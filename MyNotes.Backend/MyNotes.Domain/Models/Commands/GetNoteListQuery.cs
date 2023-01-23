@@ -1,6 +1,7 @@
 ﻿using MediatR;
+using MyNotes.Domain.Models.Views;
 
-namespace MyNotes.Application.Notes.Queries.GetNoteList
+namespace MyNotes.Domain.Models.Commands
 {
     public class GetNoteListQuery : IRequest<NoteListVm>
     {

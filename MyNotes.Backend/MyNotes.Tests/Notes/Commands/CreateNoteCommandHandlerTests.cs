@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyNotes.Application.Notes.Commands.CreateNote;
+using MyNotes.Domain.Interfaces;
+using MyNotes.Domain.Interfaces.Repositories;
+using MyNotes.Domain.Models.Commands;
 using MyNotes.Tests.Common;
-using System.Threading;
 
 namespace MyNotes.Tests.Notes.Commands
 {
@@ -11,7 +13,7 @@ namespace MyNotes.Tests.Notes.Commands
         public async Task CreateNoteCommandHandler_Success()
         {
             //Arrange
-            var handler = new CreateNoteCommandHandler(Context);
+            var handler = new CreateNoteCommandHandler((INotesDbContext)Context);
             var noteName = "note name";
             var noteDetails = "note details";
 

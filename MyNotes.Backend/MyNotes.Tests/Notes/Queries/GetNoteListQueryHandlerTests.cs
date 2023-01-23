@@ -1,21 +1,17 @@
 ﻿using AutoMapper;
-using MyNotes.Application.Interfaces;
 using MyNotes.Application.Notes.Queries.GetNoteList;
-using MyNotes.Persistence;
+using MyNotes.Domain.Interfaces;
+using MyNotes.Domain.Models.Commands;
+using MyNotes.Domain.Models.Views;
 using MyNotes.Tests.Common;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyNotes.Tests.Notes.Queries
 {
     [Collection("QueryCollection")]
     public class GetNoteListQueryHandlerTests
     {
-        private readonly NotesDbContext Context;
+        private readonly INotesDbContext Context;
         private readonly IMapper Mapper;
 
         public GetNoteListQueryHandlerTests(QueryTestFixture fixture)

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MyNotes.Application.Interfaces;
+using MyNotes.Domain.Interfaces.Services;
 using Serilog;
 
 namespace MyNotes.Application.Common.Behaviors
@@ -10,8 +10,10 @@ namespace MyNotes.Application.Common.Behaviors
     {
         ICurrentUserService _currentUserService;
 
-        public LoggingBehavior(ICurrentUserService currentUserService) =>
+        public LoggingBehavior(ICurrentUserService currentUserService)
+        {
             _currentUserService = currentUserService;
+        }
 
         public async Task<TResponse> Handle(TRequest request,
             RequestHandlerDelegate<TResponse> next,

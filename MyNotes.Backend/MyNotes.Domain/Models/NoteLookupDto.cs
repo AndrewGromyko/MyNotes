@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using MyNotes.Application.Common.Mappings;
-using MyNotes.Domain;
+using MyNotes.Domain.Interfaces.Services;
 
-namespace MyNotes.Application.Notes.Queries.GetNoteList
+namespace MyNotes.Domain.Models
 {
     public class NoteLookupDto : IMapWith<Note>
     {

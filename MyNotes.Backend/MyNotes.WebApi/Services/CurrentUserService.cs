@@ -1,4 +1,4 @@
-﻿using MyNotes.Application.Interfaces;
+﻿using MyNotes.Domain.Interfaces.Services;
 using System.Security.Claims;
 
 namespace MyNotes.WebApi.Services
@@ -7,8 +7,10 @@ namespace MyNotes.WebApi.Services
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CurrentUserService(IHttpContextAccessor httpContextAccessor) =>
+        public CurrentUserService(IHttpContextAccessor httpContextAccessor)
+        {
             _httpContextAccessor = httpContextAccessor;
+        }
 
         public Guid UserId
         {

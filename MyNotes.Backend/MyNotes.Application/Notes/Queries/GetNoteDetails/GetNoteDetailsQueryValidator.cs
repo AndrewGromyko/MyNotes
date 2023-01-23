@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MyNotes.Domain.Models.Commands;
 
 namespace MyNotes.Application.Notes.Queries.GetNoteDetails
 {

@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Azure.Core;
 using MyNotes.Application.Notes.Queries.GetNoteDetails;
+using MyNotes.Domain.Interfaces;
+using MyNotes.Domain.Models.Commands;
+using MyNotes.Domain.Models.Views;
 using MyNotes.Persistence;
 using MyNotes.Tests.Common;
 using Shouldly;
@@ -10,7 +13,7 @@ namespace MyNotes.Tests.Notes.Queries
     [Collection("QueryCollection")]
     public class GetNoteDetailsQueryHandlerTests
     {
-        private readonly NotesDbContext Context;
+        private readonly INotesDbContext Context;
         private readonly IMapper Mapper;
 
         public GetNoteDetailsQueryHandlerTests(QueryTestFixture fixture)

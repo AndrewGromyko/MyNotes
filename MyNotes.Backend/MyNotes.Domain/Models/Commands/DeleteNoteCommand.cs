@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MyNotes.Application.Notes.Commands.DeleteNote
+namespace MyNotes.Domain.Models.Commands
 {
     public class DeleteNoteCommand : IRequest
     {

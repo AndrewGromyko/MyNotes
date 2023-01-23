@@ -1,16 +1,21 @@
 ﻿using MediatR;
-using MyNotes.Application.Interfaces;
-using MyNotes.Domain;
+using MyNotes.Domain.Interfaces;
+using MyNotes.Domain.Interfaces.Repositories;
+using MyNotes.Domain.Models;
+using MyNotes.Domain.Models.Commands;
+using MyNotes.Persistence.Repositories.NotesRepository;
 
 namespace MyNotes.Application.Notes.Commands.CreateNote
 {
     public class CreateNoteCommandHandler
-        :IRequestHandler<CreateNoteCommand, Guid>
+        : IRequestHandler<CreateNoteCommand, Guid>
     {
-        private readonly INotesDbContext _dbContext;
+        private INotesRepository _repository;
 
         public CreateNoteCommandHandler(INotesDbContext dbContext)
-            => _dbContext = dbContext;
+        {
+            _repository = new NotesRepository(dbContext);
+        }
 
         public async Task<Guid> Handle(CreateNoteCommand request,
             CancellationToken cancellationToken)
@@ -25,8 +30,7 @@ namespace MyNotes.Application.Notes.Commands.CreateNote
                 EditDate = null
             };
 
-            await _dbContext.Notes.AddAsync(note, cancellationToken);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _repository.CreateNoteAsync(note, cancellationToken);
 
             return note.Id;
         }

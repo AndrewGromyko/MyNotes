@@ -1,4 +1,4 @@
-﻿namespace MyNotes.Application.Interfaces
+﻿namespace MyNotes.Domain.Interfaces.Services
 {
     public interface ICurrentUserService
     {

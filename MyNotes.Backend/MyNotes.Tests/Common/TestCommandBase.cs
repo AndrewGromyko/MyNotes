@@ -1,10 +1,11 @@
-﻿using MyNotes.Persistence;
+﻿using MyNotes.Domain.Interfaces;
+using MyNotes.Persistence;
 
 namespace MyNotes.Tests.Common
 {
     public abstract class TestCommandBase : IDisposable
     {
-        protected readonly NotesDbContext Context;
+        protected NotesDbContext Context;
 
         public TestCommandBase()
         {

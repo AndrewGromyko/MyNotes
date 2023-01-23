@@ -1,30 +1,32 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using MyNotes.Application.Common.Exceptions;
-using MyNotes.Application.Interfaces;
-using MyNotes.Domain;
+using MyNotes.Domain.Interfaces;
+using MyNotes.Domain.Interfaces.Repositories;
+using MyNotes.Domain.Models;
+using MyNotes.Domain.Models.Commands;
+using MyNotes.Persistence.Repositories.NotesRepository;
 
 namespace MyNotes.Application.Notes.Commands.DeleteNote
 {
     public class DeleteNoteCommandHandler
         : IRequestHandler<DeleteNoteCommand>
     {
-        private readonly INotesDbContext _dbContext;
+        private INotesRepository _repository;
 
-        public DeleteNoteCommandHandler(INotesDbContext dbContext) =>
-            _dbContext = dbContext;
+        public DeleteNoteCommandHandler(INotesDbContext dbContext)
+        {
+            _repository = new NotesRepository(dbContext);
+        }
 
         public async Task<Unit> Handle(DeleteNoteCommand request,
             CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Notes
-                .FindAsync(new object[] { request.Id }, cancellationToken);
+            var entity = await _repository.FindNoteAsync(request, cancellationToken);
 
             if (entity == null || entity.UserId != request.UserId)
                 throw new NotFoundException(nameof(Note), request.Id);
 
-            _dbContext.Notes.Remove(entity);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _repository.DeleteNoteAsync(entity, cancellationToken);
 
             return Unit.Value;
         }

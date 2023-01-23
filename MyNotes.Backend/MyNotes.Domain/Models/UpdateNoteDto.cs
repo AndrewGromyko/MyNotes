@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using MyNotes.Application.Common.Mappings;
-using MyNotes.Application.Notes.Commands.CreateNote;
-using MyNotes.Application.Notes.Commands.UpdateNote;
+using MyNotes.Domain.Interfaces.Services;
+using MyNotes.Domain.Models.Commands;
 
-namespace MyNotes.WebApi.Models
+namespace MyNotes.Domain.Models
 {
     public class UpdateNoteDto : IMapWith<UpdateNoteCommand>
     {

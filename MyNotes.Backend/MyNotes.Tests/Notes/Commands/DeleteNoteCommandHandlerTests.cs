@@ -1,7 +1,7 @@
 ﻿using MyNotes.Application.Common.Exceptions;
 using MyNotes.Application.Notes.Commands.CreateNote;
 using MyNotes.Application.Notes.Commands.DeleteNote;
-using MyNotes.Domain;
+using MyNotes.Domain.Models.Commands;
 using MyNotes.Tests.Common;
 
 namespace MyNotes.Tests.Notes.Commands

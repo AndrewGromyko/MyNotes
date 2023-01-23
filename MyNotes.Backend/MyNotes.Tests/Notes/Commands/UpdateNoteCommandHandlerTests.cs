@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyNotes.Application.Common.Exceptions;
 using MyNotes.Application.Notes.Commands.UpdateNote;
+using MyNotes.Domain.Models.Commands;
 using MyNotes.Tests.Common;
 
 namespace MyNotes.Tests.Notes.Commands
@@ -11,7 +12,7 @@ namespace MyNotes.Tests.Notes.Commands
         public async Task UpdateNoteCommandHandler_Success()
         {
             //Arrange
-            var handler = new UpdateNoteCommandHandler(Context);
+            var handler = new UpdateNoteCommandHandler((Domain.Interfaces.INotesDbContext)Context);
             var updatedTitle = "Updated Title";
 
             //Act
